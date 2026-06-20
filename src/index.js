@@ -79,4 +79,18 @@ sidebar.addEventListener("click", (event) => {
   }
 });
 
+mainArea.addEventListener("submit", (event) => {
+  let target = event.target;
+
+  if (target.id === "manage-add-project-form") {
+    const projectTitle = document.querySelector("#new-project-input").value;
+
+    projectManager.addProject(projectTitle);
+    displayController.renderSidebar();
+    displayController.renderManageProjects();
+
+    event.preventDefault();
+  }
+});
+
 displayController.init();
