@@ -69,3 +69,5 @@ function createTodo(title) {
     toggleComplete,
   };
 }
+
+export { createTodo };
