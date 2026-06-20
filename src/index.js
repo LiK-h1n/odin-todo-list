@@ -90,6 +90,29 @@ mainArea.addEventListener("submit", (event) => {
     displayController.renderManageProjects();
 
     event.preventDefault();
+  } else if (target.id === "add-task-form") {
+    const todoTitle = document.querySelector("#task-title-input").value;
+    const todoDescription = document.querySelector("#task-desc-input").value;
+    const todoDueDate = document.querySelector("#task-date-input").value;
+    const todoPriority = document.querySelector("#task-priority-input").value;
+    const todo = createTodo(todoTitle);
+
+    if (todoDescription !== "") {
+      todo.setDescription(todoDescription);
+    }
+
+    if (todoDueDate !== "") {
+      todo.setDueDate(todoDueDate);
+    }
+
+    if (todoPriority !== "normal") {
+      todo.setPriority(todoPriority);
+    }
+
+    projectManager.getActiveProject().addTodo(todo);
+    displayController.renderTasks();
+    displayController.renderInlineTaskForm();
+    event.preventDefault();
   }
 });
 

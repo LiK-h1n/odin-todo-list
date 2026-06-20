@@ -107,9 +107,9 @@ const displayController = (() => {
       <div class="form-meta-row">
         <input type="date" id="task-date-input" title="Due Date">
         <select id="task-priority-input">
-          <option value="low">Low</option>
-          <option value="normal" selected>Normal</option>
-          <option value="high">High</option>
+          <option value="low">low</option>
+          <option value="normal" selected>normal</option>
+          <option value="high">high</option>
         </select>
       </div>
 
