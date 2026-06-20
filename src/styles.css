@@ -129,7 +129,7 @@ body {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.nav-btn.active {
+.active {
   background-color: var(--active-bg);
   color: var(--primary-blue);
   font-weight: 600;

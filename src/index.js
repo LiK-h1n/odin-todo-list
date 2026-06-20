@@ -51,6 +51,25 @@ sidebar.addEventListener("click", (event) => {
     const isNowHidden = projectlistUl.classList.contains("hidden");
 
     target.textContent = isNowHidden ? ">" : "v";
+  } else if (
+    target.id === "inbox-btn" ||
+    target.classList.contains("project-btn")
+  ) {
+    const projectId =
+      target.id === "inbox-btn"
+        ? target.dataset.id
+        : target.closest(".project-item").dataset.id;
+
+    projectManager.setActiveProject(projectId);
+    displayController.renderTasks();
+
+    const activeProjectButton = sidebar.querySelector(".active");
+
+    if (activeProjectButton) {
+      activeProjectButton.classList.toggle("active");
+    }
+
+    target.classList.add("active");
   }
 });
 
