@@ -26,6 +26,9 @@ const projectManager = (function createProjectManager() {
 
   const getActiveProject = () => _activeProject;
 
+  const getInbox = () =>
+    _projects.find((project) => project.getTitle() === "Inbox");
+
   return {
     addProject,
     deleteProject,
@@ -33,10 +36,11 @@ const projectManager = (function createProjectManager() {
     getProjectById,
     setActiveProject,
     getActiveProject,
+    getInbox,
   };
 })();
 
-const inbox = projectManager.addProject("Inbox");
-projectManager.setActiveProject(inbox.getId());
+projectManager.addProject("Inbox");
+projectManager.setActiveProject(projectManager.getInbox().getId());
 
 export { projectManager };
