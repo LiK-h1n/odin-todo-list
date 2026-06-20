@@ -93,4 +93,13 @@ mainArea.addEventListener("submit", (event) => {
   }
 });
 
+mainArea.addEventListener("click", (event) => {
+  let target = event.target;
+
+  if (target.className === "task-checkbox") {
+    const taskId = target.closest(".task-row").dataset.id;
+    projectManager.getActiveProject().getTodoById(taskId).toggleComplete();
+  }
+});
+
 displayController.init();
