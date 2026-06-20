@@ -97,8 +97,12 @@ mainArea.addEventListener("click", (event) => {
   let target = event.target;
 
   if (target.classList.contains("task-checkbox")) {
-    const taskId = target.closest(".task-row").dataset.id;
-    projectManager.getActiveProject().getTodoById(taskId).toggleComplete();
+    const todoId = target.closest(".task-row").dataset.id;
+    projectManager.getActiveProject().getTodoById(todoId).toggleComplete();
+    displayController.renderTasks();
+  } else if (target.classList.contains("delete-task")) {
+    const todoId = target.closest(".task-row").dataset.id;
+    projectManager.getActiveProject().removeTodo(todoId);
     displayController.renderTasks();
   }
 });
