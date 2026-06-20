@@ -16,12 +16,13 @@ function createProject(title) {
   };
 
   const removeTodo = (todoId) => {
-    _todos = _todos.filter((todo) => todo.getId() != todoId);
+    _todos = _todos.filter((todo) => todo.getId() !== todoId);
   };
 
   const getTodos = () => _todos;
 
-  const getTodoById = (todoId) => _todos.find((todo) => todo.getId() == todoId);
+  const getTodoById = (todoId) =>
+    _todos.find((todo) => todo.getId() === todoId);
 
   return {
     getId,
@@ -33,3 +34,5 @@ function createProject(title) {
     getTodoById,
   };
 }
+
+export { createProject };
