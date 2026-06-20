@@ -25,27 +25,34 @@ const displayController = (() => {
   };
 
   const renderTasks = () => {
+    const mainArea = document.querySelector(".main-area");
     const activeProject = projectManager.getActiveProject();
 
     if (!activeProject) {
       return;
     }
 
-    activeProjectTitle.textContent = activeProject.getTitle();
-
-    taskListContainer.innerHTML = activeProject
-      .getTodos()
-      .map(
-        (todo) => `
-      <div class="task-row ${todo.getPriority()}" data-id="${todo.getId()}">
-        <input type="checkbox" ${todo.getIsComplete() ? "checked" : ""}>
-        <span class="task-title">${todo.getTitle()}</span>
-        <span class="task-date">${todo.getDueDate() ? format(todo.getDueDate(), "MMM do") : "No Date"}</span>
-        <button class="delete-task">X</button>
-      </div>
-    `
-      )
-      .join("");
+    mainArea.innerHTML = `
+    <header class="project-view-header">
+      <h2 id="active-project-title">${activeProject.getTitle()}</h2>
+      <button id="add-task-btn" class="primary-btn">+ Add Task</button>
+    </header>
+    <div id="task-list" class="tasks-container">
+      ${activeProject
+        .getTodos()
+        .map(
+          (todo) => `
+        <div class="task-row ${todo.getPriority()}" data-id="${todo.getId()}">
+          <input type="checkbox" ${todo.getIsComplete() ? "checked" : ""} class="task-checkbox">
+          <span class="task-title">${todo.getTitle()}</span>
+          <span class="task-date">${todo.getDueDate() ? format(todo.getDueDate(), "MMM do") : "No Date"}</span>
+          <button class="delete-task">X</button>
+        </div>
+      `
+        )
+        .join("")}
+    </div>
+  `;
   };
 
   const renderManageProjects = () => {

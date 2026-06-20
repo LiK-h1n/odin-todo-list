@@ -69,12 +69,11 @@ sidebar.addEventListener("click", (event) => {
         : target.closest(".project-item").dataset.id;
 
     projectManager.setActiveProject(projectId);
-    displayController.renderTasks();
-
     toggleActiveProject();
-
     target.classList.add("active");
+    displayController.renderTasks(); // I tried this but it doesn't seem to fix it
   } else if (target.id === "add-project-btn") {
+    toggleActiveProject();
     displayController.renderSidebar();
     displayController.renderManageProjects();
   }
