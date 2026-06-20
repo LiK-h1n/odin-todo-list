@@ -24,6 +24,14 @@ function createProject(title) {
   const getTodoById = (todoId) =>
     _todos.find((todo) => todo.getId() === todoId);
 
+  const toJSON = () => {
+    return {
+      id: _id,
+      title: _title,
+      todos: _todos.map((todo) => todo.toJSON()),
+    };
+  };
+
   return {
     getId,
     getTitle,
@@ -32,6 +40,7 @@ function createProject(title) {
     removeTodo,
     getTodos,
     getTodoById,
+    toJSON,
   };
 }
 

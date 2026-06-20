@@ -46,6 +46,17 @@ function createTodo(title) {
     _isComplete = _isComplete ? false : true;
   };
 
+  const toJSON = () => {
+    return {
+      id: _id,
+      title: _title,
+      description: _description,
+      dueDate: _dueDate,
+      priority: _priority,
+      isComplete: _isComplete,
+    };
+  };
+
   return {
     getId,
     getTitle,
@@ -58,6 +69,7 @@ function createTodo(title) {
     setDueDate,
     setPriority,
     toggleComplete,
+    toJSON,
   };
 }
 

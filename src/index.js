@@ -112,6 +112,7 @@ mainArea.addEventListener("submit", (event) => {
     }
 
     projectManager.getActiveProject().addTodo(todo);
+    projectManager.save();
     displayController.renderTasks();
     displayController.renderInlineTaskForm();
   }
@@ -123,10 +124,12 @@ mainArea.addEventListener("click", (event) => {
   if (target.classList.contains("task-checkbox")) {
     const todoId = target.closest(".task-row").dataset.id;
     projectManager.getActiveProject().getTodoById(todoId).toggleComplete();
+    projectManager.save();
     displayController.renderTasks();
   } else if (target.classList.contains("delete-task")) {
     const todoId = target.closest(".task-row").dataset.id;
     projectManager.getActiveProject().removeTodo(todoId);
+    projectManager.save();
     displayController.renderTasks();
   } else if (target.id === "add-task-btn") {
     displayController.renderInlineTaskForm();

@@ -29,6 +29,16 @@ const projectManager = (function createProjectManager() {
   const getInbox = () =>
     _projects.find((project) => project.getTitle() === "Inbox");
 
+  const save = () => {
+    const dataString = JSON.stringify(
+      _projects.map((project) => project.toJSON())
+    );
+
+    localStorage.setItem("taskMasterData", dataString);
+
+    console.log("Saved");
+  };
+
   return {
     addProject,
     deleteProject,
@@ -37,6 +47,7 @@ const projectManager = (function createProjectManager() {
     setActiveProject,
     getActiveProject,
     getInbox,
+    save,
   };
 })();
 
