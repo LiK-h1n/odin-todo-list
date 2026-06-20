@@ -72,6 +72,8 @@ h6 {
   --danger-red: #ef4444;
   --border-light: #e5e7eb;
   --active-bg: #dbeafe;
+  --priority-green: #28a745;
+  --priority-red: #dc3545;
 }
 
 body {
@@ -400,4 +402,28 @@ footer {
   border: none;
   color: var(--text-muted);
   cursor: pointer;
+}
+
+.task-row.low {
+  border-left: 5px solid var(--priority-green);
+}
+
+.task-row.normal {
+  border-left: 5px solid var(--border-light);
+}
+
+.task-row.high {
+  border-left: 5px solid var(--priority-red);
+}
+
+#task-priority-input option[value="low"] {
+  color: var(--priority-green);
+  font-weight: bold;
+}
+#task-priority-input option[value="normal"] {
+  color: var(--text-dark);
+}
+#task-priority-input option[value="high"] {
+  color: var(--priority-red);
+  font-weight: bold;
 }
