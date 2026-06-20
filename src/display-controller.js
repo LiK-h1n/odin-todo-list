@@ -51,6 +51,8 @@ const displayController = (() => {
       `
         )
         .join("")}
+
+        <div id="inline-form-container"></div>
     </div>
   `;
   };
@@ -94,6 +96,33 @@ const displayController = (() => {
   `;
   };
 
+  const renderInlineTaskForm = () => {
+    const container = document.querySelector("#inline-form-container");
+
+    container.innerHTML = `
+    <form id="add-task-form" class="inline-task-form">
+      <input type="text" id="task-title-input" placeholder="Task title" required autocomplete="off">
+      <textarea id="task-desc-input" placeholder="Task description" rows="2"></textarea>
+      
+      <div class="form-meta-row">
+        <input type="date" id="task-date-input" title="Due Date">
+        <select id="task-priority-input">
+          <option value="low">Low</option>
+          <option value="normal" selected>Normal</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" id="cancel-task-btn" class="cancel-btn">Cancel</button>
+        <button type="submit" class="submit-btn">Add Task</button>
+      </div>
+    </form>
+  `;
+
+    document.querySelector("#task-title-input").focus();
+  };
+
   const init = () => {
     const inboxBtn = document.querySelector("#inbox-btn");
     const inboxId = projectManager
@@ -107,7 +136,13 @@ const displayController = (() => {
     renderTasks();
   };
 
-  return { init, renderSidebar, renderTasks, renderManageProjects };
+  return {
+    init,
+    renderSidebar,
+    renderTasks,
+    renderManageProjects,
+    renderInlineTaskForm,
+  };
 })();
 
 export { displayController };
