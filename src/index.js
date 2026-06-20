@@ -104,6 +104,8 @@ mainArea.addEventListener("click", (event) => {
     const todoId = target.closest(".task-row").dataset.id;
     projectManager.getActiveProject().removeTodo(todoId);
     displayController.renderTasks();
+  } else if (target.id === "add-task-btn") {
+    displayController.renderInlineTaskForm();
   }
 });
 
