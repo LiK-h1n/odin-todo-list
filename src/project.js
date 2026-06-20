@@ -1,5 +1,5 @@
-function createProject(title) {
-  let _id = crypto.randomUUID();
+function createProject(title, id = crypto.randomUUID()) {
+  let _id = id;
   let _title = title;
   let _todos = [];
 

@@ -1,7 +1,7 @@
 import { parseISO, isValid } from "date-fns";
 
-function createTodo(title) {
-  let _id = crypto.randomUUID();
+function createTodo(title, id = crypto.randomUUID()) {
+  let _id = id;
   let _title = title;
   let _description = "";
   let _dueDate = null;
@@ -29,6 +29,12 @@ function createTodo(title) {
   };
 
   const setDueDate = (dueDate) => {
+    if (!dueDate) {
+      _dueDate = null;
+
+      return;
+    }
+
     const dueDateObject = parseISO(dueDate);
 
     if (isValid(dueDateObject)) {

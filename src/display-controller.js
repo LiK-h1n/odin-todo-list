@@ -124,13 +124,16 @@ const displayController = (() => {
   };
 
   const init = () => {
-    const inboxBtn = document.querySelector("#inbox-btn");
-    const inboxId = projectManager
-      .getAllProjects()
-      .find((project) => project.getTitle() === "Inbox")
-      .getId();
+    projectManager.load();
 
-    inboxBtn.setAttribute("data-id", inboxId);
+    const inbox = projectManager.getInbox();
+
+    if (inbox) {
+      projectManager.setActiveProject(inbox.getId());
+
+      const inboxBtn = document.querySelector("#inbox-btn");
+      inboxBtn.setAttribute("data-id", inbox.getId());
+    }
 
     renderSidebar();
     renderTasks();

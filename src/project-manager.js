@@ -1,11 +1,12 @@
 import { createProject } from "./project.js";
+import { createTodo } from "./todo.js";
 
 const projectManager = (function createProjectManager() {
   let _projects = [];
   let _activeProject = null;
 
-  const addProject = (title) => {
-    const project = createProject(title);
+  const addProject = (title, id) => {
+    const project = createProject(title, id);
     _projects.push(project);
 
     return project;
@@ -31,12 +32,42 @@ const projectManager = (function createProjectManager() {
 
   const save = () => {
     const dataString = JSON.stringify(
-      _projects.map((project) => project.toJSON())
+      getAllProjects().map((project) => project.toJSON())
     );
 
     localStorage.setItem("taskMasterData", dataString);
 
     console.log("Saved");
+  };
+
+  const load = () => {
+    const rawData = localStorage.getItem("taskMasterData");
+
+    if (!rawData) {
+      return;
+    }
+
+    const parsedProjects = JSON.parse(rawData);
+
+    _projects = [];
+
+    parsedProjects.forEach((projectData) => {
+      const project = addProject(projectData.title, projectData.id);
+
+      projectData.todos.forEach((todoData) => {
+        const todo = createTodo(todoData.title, todoData.id);
+
+        todo.setDescription(todoData.description);
+        todo.setDueDate(todoData.dueDate);
+        todo.setPriority(todoData.priority);
+
+        if (todoData.isComplete) {
+          todo.toggleComplete();
+        }
+
+        project.addTodo(todo);
+      });
+    });
   };
 
   return {
@@ -48,6 +79,7 @@ const projectManager = (function createProjectManager() {
     getActiveProject,
     getInbox,
     save,
+    load,
   };
 })();
 

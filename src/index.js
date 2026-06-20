@@ -21,22 +21,6 @@ import { createTodo } from "./todo.js";
 import { displayController } from "./display-controller.js";
 import "./styles.css";
 
-const inbox = projectManager.getInbox();
-inbox.addTodo(createTodo("Finish the Odin Todo project"));
-inbox.addTodo(createTodo("Call the gym for membership details"));
-
-const gymProject = projectManager.addProject("Gym");
-gymProject.addTodo(createTodo("Squats: 3 sets of 10"));
-gymProject.addTodo(createTodo("Deadlifts: 1 rep max"));
-
-const codingProject = projectManager.addProject("Study Plan");
-codingProject.addTodo(createTodo("Master localStorage logic"));
-codingProject.addTodo(createTodo("Learn date-fns formatting"));
-
-const sampleTodo = codingProject.getTodos()[0];
-sampleTodo.setDescription("Crucial for the 20-day sprint goal!");
-sampleTodo.setPriority("high");
-
 const sidebar = document.querySelector(".sidebar");
 const mainArea = document.querySelector(".main-area");
 
@@ -88,6 +72,7 @@ mainArea.addEventListener("submit", (event) => {
     const projectTitle = document.querySelector("#new-project-input").value;
 
     projectManager.addProject(projectTitle);
+    projectManager.save();
     displayController.renderSidebar();
     displayController.renderManageProjects();
   } else if (target.id === "add-task-form") {
