@@ -83,14 +83,16 @@ mainArea.addEventListener("submit", (event) => {
   let target = event.target;
 
   if (target.id === "manage-add-project-form") {
+    event.preventDefault();
+
     const projectTitle = document.querySelector("#new-project-input").value;
 
     projectManager.addProject(projectTitle);
     displayController.renderSidebar();
     displayController.renderManageProjects();
-
-    event.preventDefault();
   } else if (target.id === "add-task-form") {
+    event.preventDefault();
+
     const todoTitle = document.querySelector("#task-title-input").value;
     const todoDescription = document.querySelector("#task-desc-input").value;
     const todoDueDate = document.querySelector("#task-date-input").value;
@@ -112,7 +114,6 @@ mainArea.addEventListener("submit", (event) => {
     projectManager.getActiveProject().addTodo(todo);
     displayController.renderTasks();
     displayController.renderInlineTaskForm();
-    event.preventDefault();
   }
 });
 
@@ -129,6 +130,8 @@ mainArea.addEventListener("click", (event) => {
     displayController.renderTasks();
   } else if (target.id === "add-task-btn") {
     displayController.renderInlineTaskForm();
+  } else if (target.id === "cancel-task-btn") {
+    displayController.renderTasks();
   }
 });
 
