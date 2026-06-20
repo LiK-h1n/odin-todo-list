@@ -36,7 +36,7 @@ const projectManager = (function createProjectManager() {
   };
 })();
 
-const inbox = projectManager.addProject("inbox");
+const inbox = projectManager.addProject("Inbox");
 projectManager.setActiveProject(inbox.getId());
 
 export { projectManager };
