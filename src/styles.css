@@ -270,3 +270,68 @@ footer {
 .project-list.hidden {
   display: none;
 }
+
+/* --- Manage Projects View --- */
+.manage-projects-view {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.manage-project-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.manage-project-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.delete-project-btn {
+  background: none;
+  border: 1px solid var(--danger-red);
+  color: var(--danger-red);
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-project-btn:hover {
+  background-color: var(--danger-red);
+  color: white;
+}
+
+.add-project-inline {
+  display: flex;
+  gap: 10px;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: var(--sidebar-bg);
+  border-radius: 8px;
+}
+
+#new-project-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+#confirm-add-project {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#confirm-add-project:hover {
+  background-color: var(--primary-hover);
+}

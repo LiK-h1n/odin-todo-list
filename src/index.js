@@ -40,6 +40,14 @@ sampleTodo.setPriority("high");
 const sidebar = document.querySelector(".sidebar");
 const mainArea = document.querySelector(".main-area");
 
+function toggleActiveProject() {
+  const activeProjectButton = sidebar.querySelector(".active");
+
+  if (activeProjectButton) {
+    activeProjectButton.classList.toggle("active");
+  }
+}
+
 sidebar.addEventListener("click", (event) => {
   const target = event.target;
 
@@ -63,13 +71,12 @@ sidebar.addEventListener("click", (event) => {
     projectManager.setActiveProject(projectId);
     displayController.renderTasks();
 
-    const activeProjectButton = sidebar.querySelector(".active");
-
-    if (activeProjectButton) {
-      activeProjectButton.classList.toggle("active");
-    }
+    toggleActiveProject();
 
     target.classList.add("active");
+  } else if (target.id === "add-project-btn") {
+    displayController.renderSidebar();
+    displayController.renderManageProjects();
   }
 });
 

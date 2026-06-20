@@ -48,6 +48,45 @@ const displayController = (() => {
       .join("");
   };
 
+  const renderManageProjects = () => {
+    const mainArea = document.querySelector(".main-area");
+    const allProjects = projectManager
+      .getAllProjects()
+      .filter((project) => project.getTitle() !== "Inbox");
+
+    mainArea.innerHTML = `
+    <div class="manage-projects-view">
+      <header class="project-view-header">
+        <h2>My Projects</h2>
+      </header>
+
+      <ul class="manage-project-list">
+        ${allProjects
+          .map(
+            (project) => `
+          <li class="manage-project-item">
+            <span>${project.getTitle()}</span>
+            <button class="delete-project-btn" data-id="${project.getId()}">Delete</button>
+          </li>
+        `
+          )
+          .join("")}
+      </ul>
+      
+      <form id="manage-add-project-form" class="add-project-inline">
+        <input 
+          type="text" 
+          id="new-project-input" 
+          placeholder="Project name" 
+          autocomplete="off" 
+          required
+        >
+        <button type="submit" id="confirm-add-project">Add</button>
+      </form>
+    </div>
+  `;
+  };
+
   const init = () => {
     const inboxBtn = document.querySelector("#inbox-btn");
     const inboxId = projectManager
@@ -61,7 +100,7 @@ const displayController = (() => {
     renderTasks();
   };
 
-  return { init, renderSidebar, renderTasks };
+  return { init, renderSidebar, renderTasks, renderManageProjects };
 })();
 
 export { displayController };
