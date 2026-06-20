@@ -37,4 +37,21 @@ const sampleTodo = codingProject.getTodos()[0];
 sampleTodo.setDescription("Crucial for the 20-day sprint goal!");
 sampleTodo.setPriority("high");
 
+const sidebar = document.querySelector(".sidebar");
+const mainArea = document.querySelector(".main-area");
+
+sidebar.addEventListener("click", (event) => {
+  const target = event.target;
+
+  if (target.id === "toggle-projects-btn") {
+    const projectlistUl = document.querySelector("#project-list");
+
+    projectlistUl.classList.toggle("hidden");
+
+    const isNowHidden = projectlistUl.classList.contains("hidden");
+
+    target.textContent = isNowHidden ? ">" : "v";
+  }
+});
+
 displayController.init();
