@@ -6,7 +6,6 @@ function createTodo(title) {
   let _description = "";
   let _dueDate = null;
   let _priority = "normal";
-  let _notes = "";
   let _isComplete = false;
 
   const getId = () => _id;
@@ -18,8 +17,6 @@ function createTodo(title) {
   const getDueDate = () => _dueDate;
 
   const getPriority = () => _priority;
-
-  const getNotes = () => _notes;
 
   const getIsComplete = () => _isComplete;
 
@@ -45,10 +42,6 @@ function createTodo(title) {
     _priority = priority;
   };
 
-  const setNotes = (notes) => {
-    _notes = notes;
-  };
-
   const toggleComplete = () => {
     _isComplete = _isComplete ? false : true;
   };
@@ -59,13 +52,11 @@ function createTodo(title) {
     getDescription,
     getDueDate,
     getPriority,
-    getNotes,
     getIsComplete,
     setTitle,
     setDescription,
     setDueDate,
     setPriority,
-    setNotes,
     toggleComplete,
   };
 }
