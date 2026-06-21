@@ -144,30 +144,24 @@ const displayController = (() => {
 
     modalHolder.innerHTML = `
     <dialog id="edit-task-dialog" class="edit-modal">
-      <form id="edit-task-form" class="edit-form" data-id="${todo.getId()}">
-        <h2>Edit Task</h2>
-        
+      <form id="edit-task-form" class="edit-form" data-id="${todo.getId()}">    
         <div>
-          <label>Title</label>
           <input type="text" id="edit-title" value="${todo.getTitle()}" required>
         </div>
 
         <div>
-          <label>Description</label>
           <textarea id="edit-desc" rows="3">${todo.getDescription()}</textarea>
         </div>
 
         <div class="form-meta-row">
           <div>
-            <label>Due Date</label>
             <input type="date" id="edit-date" value="${formattedDate}">
           </div>
           <div>
-            <label>Priority</label>
             <select id="edit-priority">
-              <option value="low" ${todo.getPriority() === "low" ? "selected" : ""}>Low</option>
-              <option value="normal" ${todo.getPriority() === "normal" ? "selected" : ""}>Normal</option>
-              <option value="high" ${todo.getPriority() === "high" ? "selected" : ""}>High</option>
+              <option value="low" ${todo.getPriority() === "low" ? "selected" : ""}>low</option>
+              <option value="normal" ${todo.getPriority() === "normal" ? "selected" : ""}>normal</option>
+              <option value="high" ${todo.getPriority() === "high" ? "selected" : ""}>high</option>
             </select>
           </div>
         </div>

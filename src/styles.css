@@ -351,7 +351,9 @@ footer {
 }
 
 .inline-task-form input[type="text"],
-.inline-task-form textarea {
+.inline-task-form textarea,
+.edit-form input[type="text"],
+.edit-form textarea {
   border: none;
   font-family: inherit;
   font-size: 1rem;
@@ -359,7 +361,8 @@ footer {
   outline: none;
 }
 
-#task-title-input {
+#task-title-input,
+#edit-title {
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -387,7 +390,8 @@ footer {
   padding-top: 1rem;
 }
 
-.inline-task-form .submit-btn {
+.inline-task-form .submit-btn,
+.edit-form .submit-btn {
   background-color: var(--primary-blue);
   color: white;
   border: none;
@@ -397,7 +401,8 @@ footer {
   cursor: pointer;
 }
 
-.inline-task-form .cancel-btn {
+.inline-task-form .cancel-btn,
+.edit-form .cancel-btn {
   background: none;
   border: none;
   color: var(--text-muted);
@@ -416,14 +421,17 @@ footer {
   border-left: 5px solid var(--priority-red);
 }
 
-#task-priority-input option[value="low"] {
+#task-priority-input option[value="low"],
+#edit-priority option[value="low"] {
   color: var(--priority-green);
   font-weight: bold;
 }
-#task-priority-input option[value="normal"] {
+#task-priority-input option[value="normal"],
+#edit-priority option[value="normal"] {
   color: var(--text-dark);
 }
-#task-priority-input option[value="high"] {
+#task-priority-input option[value="high"],
+#edit-priority option[value="high"] {
   color: var(--priority-red);
   font-weight: bold;
 }
@@ -448,20 +456,4 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-}
-
-.edit-form label {
-  font-weight: bold;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-bottom: 0.3rem;
-}
-
-.edit-form input,
-.edit-form textarea,
-.edit-form select {
-  padding: 0.8rem;
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-  font-family: inherit;
 }
