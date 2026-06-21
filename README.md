@@ -1,4 +1,4 @@
-# Odin: TaskMaster (Todo List)
+# Odin: Todo List
 
 ## Description
 
