@@ -6,7 +6,7 @@ export default {
   output: {
     filename: "main.js",
     path: path.resolve(import.meta.dirname, "dist"),
-    clean: true, // Clears the dist folder before every build
+    clean: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -17,15 +17,15 @@ export default {
     rules: [
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"], // Handles CSS imports
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.html$/i,
-        use: ["html-loader"], // Handles images hard-coded in HTML
+        use: ["html-loader"],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource", // Handles images imported in JS
+        type: "asset/resource",
       },
     ],
   },

@@ -5,6 +5,6 @@ export default merge(common, {
   mode: "development",
   devtool: "eval-source-map",
   devServer: {
-    watchFiles: ["./src/template.html"], // Forces reload when HTML changes
+    watchFiles: ["./src/template.html"],
   },
 });
