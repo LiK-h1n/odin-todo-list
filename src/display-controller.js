@@ -3,8 +3,6 @@ import { format } from "date-fns";
 
 const displayController = (() => {
   const projectListContainer = document.querySelector("#project-list");
-  const taskListContainer = document.querySelector("#task-list");
-  const activeProjectTitle = document.querySelector("#active-project-title");
 
   const renderSidebar = () => {
     const allProjects = projectManager.getAllProjects();
