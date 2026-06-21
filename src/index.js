@@ -23,6 +23,7 @@ import "./styles.css";
 
 const sidebar = document.querySelector(".sidebar");
 const mainArea = document.querySelector(".main-area");
+const modalHolder = document.querySelector("#modal-holder");
 
 function toggleActiveProject() {
   const activeProjectButton = sidebar.querySelector(".active");
@@ -101,6 +102,7 @@ mainArea.addEventListener("submit", (event) => {
     displayController.renderTasks();
     displayController.renderInlineTaskForm();
   } else if (target.id === "edit-task-form") {
+    event.preventDefault();
   }
 });
 
@@ -126,6 +128,15 @@ mainArea.addEventListener("click", (event) => {
     displayController.renderEditTaskDialog(
       projectManager.getActiveProject().getTodoById(todoId)
     );
+  }
+});
+
+modalHolder.addEventListener("click", (event) => {
+  const target = event.target;
+
+  if (target.id === "close-edit-btn") {
+    const editTaskDialog = document.querySelector("#edit-task-dialog");
+    editTaskDialog.close();
   }
 });
 
