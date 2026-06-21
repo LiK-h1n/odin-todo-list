@@ -100,6 +100,7 @@ mainArea.addEventListener("submit", (event) => {
     projectManager.save();
     displayController.renderTasks();
     displayController.renderInlineTaskForm();
+  } else if (target.id === "edit-task-form") {
   }
 });
 
@@ -120,6 +121,11 @@ mainArea.addEventListener("click", (event) => {
     displayController.renderInlineTaskForm();
   } else if (target.id === "cancel-task-btn") {
     displayController.renderTasks();
+  } else if (target.classList.contains("task-title")) {
+    const todoId = target.closest(".task-row").dataset.id;
+    displayController.renderEditTaskDialog(
+      projectManager.getActiveProject().getTodoById(todoId)
+    );
   }
 });
 
