@@ -139,12 +139,59 @@ const displayController = (() => {
     renderTasks();
   };
 
+  const renderEditTaskDialog = (todo) => {
+    const modalHolder = document.querySelector("#modal-holder");
+    const rawDate = todo.getDueDate();
+    const formattedDate = rawDate ? rawDate.toISOString().split("T")[0] : "";
+
+    modalHolder.innerHTML = `
+    <dialog id="edit-task-dialog" class="edit-modal">
+      <form id="edit-task-form" class="edit-form" data-id="${todo.getId()}">
+        <h2>Edit Task</h2>
+        
+        <div>
+          <label>Title</label>
+          <input type="text" id="edit-title" value="${todo.getTitle()}" required>
+        </div>
+
+        <div>
+          <label>Description</label>
+          <textarea id="edit-desc" rows="3">${todo.getDescription()}</textarea>
+        </div>
+
+        <div class="form-meta-row">
+          <div>
+            <label>Due Date</label>
+            <input type="date" id="edit-date" value="${formattedDate}">
+          </div>
+          <div>
+            <label>Priority</label>
+            <select id="edit-priority">
+              <option value="low" ${todo.getPriority() === "low" ? "selected" : ""}>Low</option>
+              <option value="normal" ${todo.getPriority() === "normal" ? "selected" : ""}>Normal</option>
+              <option value="high" ${todo.getPriority() === "high" ? "selected" : ""}>High</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="close-edit-btn" class="cancel-btn">Cancel</button>
+          <button type="submit" class="submit-btn">Save Changes</button>
+        </div>
+      </form>
+    </dialog>
+  `;
+
+    document.querySelector("#edit-task-dialog").showModal();
+  };
+
   return {
     init,
     renderSidebar,
     renderTasks,
     renderManageProjects,
     renderInlineTaskForm,
+    renderEditTaskDialog,
   };
 })();
 
