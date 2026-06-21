@@ -101,8 +101,6 @@ mainArea.addEventListener("submit", (event) => {
     projectManager.save();
     displayController.renderTasks();
     displayController.renderInlineTaskForm();
-  } else if (target.id === "edit-task-form") {
-    event.preventDefault();
   }
 });
 
@@ -135,6 +133,43 @@ modalHolder.addEventListener("click", (event) => {
   const target = event.target;
 
   if (target.id === "close-edit-btn") {
+    const editTaskDialog = document.querySelector("#edit-task-dialog");
+    editTaskDialog.close();
+  }
+});
+
+modalHolder.addEventListener("submit", (event) => {
+  const target = event.target;
+
+  if (target.id === "edit-task-form") {
+    event.preventDefault();
+
+    const todoId = target.dataset.id;
+    const todo = projectManager.getActiveProject().getTodoById(todoId);
+    const todoTitle = document.querySelector("#edit-title").value;
+    const todoDescription = document.querySelector("#edit-desc").value;
+    const todoDueDate = document.querySelector("#edit-date").value;
+    const todoPriority = document.querySelector("#edit-priority").value;
+
+    if (todoTitle !== "") {
+      todo.setTitle(todoTitle);
+    }
+
+    if (todoDescription !== "") {
+      todo.setDescription(todoDescription);
+    }
+
+    if (todoDueDate !== "") {
+      todo.setDueDate(todoDueDate);
+    }
+
+    if (todoPriority !== "normal") {
+      todo.setPriority(todoPriority);
+    }
+
+    projectManager.save();
+    displayController.renderTasks();
+
     const editTaskDialog = document.querySelector("#edit-task-dialog");
     editTaskDialog.close();
   }
